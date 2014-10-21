@@ -108,9 +108,9 @@ class SPPatch(Patch):
 
     compute = sp.compute
 
-    def patchedCompute(*args, **kwargs):
-      results = compute(*args, **kwargs)
-      self.saveState(args[0], args[2])
+    def patchedCompute(inputVector, learn, activeArray, *args, **kwargs):
+      results = compute(inputVector, learn, activeArray, *args, **kwargs)
+      self.saveState(inputVector, activeArray)
       self.iteration += 1
       return results
 
@@ -205,9 +205,9 @@ class EncoderPatch(Patch):
 
     encodeIntoArray = encoder.encodeIntoArray
 
-    def patchedEncodeIntoArray(*args, **kwargs):
-      encodeIntoArray(*args, **kwargs)
-      self.saveState(args[0], args[1])
+    def patchedEncodeIntoArray(inputData, output, *args, **kwargs):
+      encodeIntoArray(inputData, output, *args, **kwargs)
+      self.saveState(inputData, output)
       self.iteration += 1
 
     encoder.encodeIntoArray = patchedEncodeIntoArray

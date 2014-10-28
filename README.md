@@ -34,7 +34,7 @@ You can also patch an SP or a TP directly:
 
 Then, after the model / SP / TP has through a number of iterations:
 
-    python server.py 9090
+    python server.py
 
 Finally, switch to [nupic.cerebro2](https://github.com/numenta/nupic.cerebro2) to visualize your model / SP / TP.
 
